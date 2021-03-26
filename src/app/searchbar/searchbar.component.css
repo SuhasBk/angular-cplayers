@@ -1,0 +1,44 @@
+.example-form-field, mat-expansion-panel {
+    margin-left: 5%;
+    width: 90%;
+    height: 50%;
+}
+
+.example-viewport {
+    height: 100%;
+    width: 90%;
+    position: absolute;
+}
+
+.example-item {
+    height: 100%;
+}
+
+mat-card, mat-expansion-panel {
+    background-color: rgb(249, 249, 249);
+}
+
+.cplayer-card {
+    margin-bottom: 7%;
+    text-align: center;
+    background-color: rgb(49, 121, 204);
+    color: white;
+}
+
+.recommend {
+    background-color: blue;
+    color: white;
+}
+
+.unrecommend {
+    color: white;
+    background-color: red;
+}
+
+.avatar {
+    text-align: center;
+}
+
+.playerDetails {
+    background-color: rgb(249, 249, 249);
+}

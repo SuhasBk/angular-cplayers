@@ -1,0 +1,26 @@
+<cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+    <mat-card id="title">
+        <mat-card-title class="cricnews">🏏 Cricket News 🏏</mat-card-title>
+    </mat-card>
+    <div *ngFor="let news of newsContent" class="example-item">
+        <mat-card>
+            <mat-card-content>
+                <div>
+                    Date : {{news.date.slice(0,10)}}
+                </div>
+                <div>
+                    Team 1 : {{news['team-1']}},
+                </div>
+                <div>
+                    Team 2 : {{news['team-2']}}
+                </div>
+                <div>
+                    Toss Winner : {{news.toss_winner_team}}
+                </div>
+                <div>
+                    Match Started : {{(news.matchStarted === true) ? 'Yes' : 'No'}}
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</cdk-virtual-scroll-viewport>

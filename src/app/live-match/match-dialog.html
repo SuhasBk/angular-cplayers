@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>{{ match?.data.team[0].name }} Vs {{ match?.data.team[1].name }}</h1>
+<mat-card>
+    <div mat-dialog-content>
+        <h3 *ngIf="match?.type">Type : {{match?.type}}</h3>
+    </div>
+    <div mat-dialog-content>
+        <h3>Toss Winner : {{match?.data.toss_winner_team}}</h3>
+    </div>
+    <div mat-dialog-content>
+        <h3 *ngIf="match?.score">Score : {{match?.score}}</h3>
+    </div>
+    <div mat-dialog-content>
+        <h3 *ngIf="match?.stat">Match Status: {{match?.stat}}</h3>
+    </div>
+    <div mat-dialog-content>
+        <h3 *ngIf="match?.description">Description: {{match?.description}}</h3>
+    </div>
+    <div mat-dialog-content>
+        <h3 *ngIf="match?.data['man-of-the-match']">Man Of The Match : {{match?.data['man-of-the-match'].name}}</h3>
+    </div>
+    <div *ngIf="match?.data.winner_team" mat-dialog-content>
+        <h3>Match Winner : {{match?.data.winner_team}}</h3>
+    </div>
+
+    <mat-tree style="background-color: rgb(249, 249, 249);" [dataSource]="dataSource" [treeControl]="treeControl">
+        <!-- This is the tree node template for leaf nodes -->
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+            <!-- use a disabled button to provide padding for tree leaf -->
+            <button mat-icon-button disabled></button>
+            <mat-card style="text-align:center;width: 100%;">
+                <h4>{{node.name}}</h4>
+            </mat-card>
+        </mat-tree-node>
+        <!-- This is the tree node template for expandable nodes -->
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+            <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+                <mat-icon class="mat-icon-rtl-mirror">
+                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+            </button>
+            <h3>{{node.name + ' Lineup:'}}</h3>
+        </mat-tree-node>
+    </mat-tree>
+    
+    <div mat-dialog-actions align="center">
+        <button mat-raised-button style="background-color: red;color:white;" (click)="closeDialog()">Close</button>
+    </div>
+</mat-card>

@@ -1,0 +1,47 @@
+<div class="playerDetails">
+    <h1 mat-dialog-title align="center">
+        {{stats?.fullName}}
+    </h1>
+    <div mat-dialog-content align="center">
+        <img alt="player dp" [src]="stats?.imgUrl" onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+    </div>
+    <div *ngIf="stats?.age" mat-dialog-content>
+        <h3>Current age : {{stats.age}}</h3>
+    </div>
+    <div *ngIf="stats?.country" mat-dialog-content>
+        <h3>Country : {{stats.country}}</h3>
+    </div>
+    <div *ngIf="stats?.role" mat-dialog-content>
+        <h3>Role : {{stats.role}}</h3>
+    </div>
+    <div *ngIf="stats?.team" mat-dialog-content>
+        <h3>Teams Played : {{stats.team}}</h3>
+    </div>
+    <div *ngIf="stats?.profile" mat-dialog-content>
+        <h3>Info :{{stats.profile}}</h3>
+    </div>
+    <h3 align="center">BOWLING STATS : </h3>
+    <div *ngIf="stats?.bowlingStats" mat-dialog-content>
+        <div *ngFor="let bowl of stats.bowlingStats | keyvalue">
+            <h4>{{bowl?.key}} stats:</h4>
+            <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let type of bowl.value | keyvalue">{{type.key}}: {{type.value}}
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+    <br><hr>
+    <h3 align="center">BATTING STATS : </h3>
+    <div *ngIf="stats?.battingStats" mat-dialog-content>
+        <div *ngFor="let bat of stats.battingStats | keyvalue">
+            <h4>{{bat?.key}} stats:</h4>
+            <mat-list role="list">
+                <mat-list-item role="listitem" *ngFor="let type of bat.value | keyvalue">{{type.key}}: {{type.value}}
+                </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+    <div mat-dialog-actions align="center">
+        <button mat-raised-button color="warn" (click)="closeDialog()">Close</button>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+:host ::ng-deep .mat-tab-body-wrapper {
+  height: 60vh;
+
+}
+
+.tabs-header {
+  margin-bottom: 2%;
+    margin-top: 2%;
+    width: 100%;
+}
+
+:host ::ng-deep .mat-tab-body.mat-tab-body-active {
+  height: 60vh;
+
+}

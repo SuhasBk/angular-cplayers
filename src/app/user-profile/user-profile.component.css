@@ -1,0 +1,8 @@
+.marg-top {
+    margin-top: 3%;
+    width:100%;
+}
+
+.card-body, .card-header {
+    background-color: rgb(249, 249, 249);
+}

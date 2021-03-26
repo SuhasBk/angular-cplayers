@@ -1,0 +1,66 @@
+<div *ngIf="loggedIn; then user else normal"></div>
+
+<!-- NORMAL HEADER -->
+
+<ng-template #normal>
+  <p>
+    <mat-toolbar style="background-color: #0c1066">
+      <a href="">
+        <span>CPlayers</span>
+      </a>
+      <span class="example-spacer"></span>
+      <a [routerLink]="['/login']">
+          <button mat-icon-button class="example-icon">
+          <mat-icon>input</mat-icon>
+          </button>
+          Login
+      </a>
+      <a [routerLink]="['/register']">
+          <button mat-icon-button class="example-icon">
+          <mat-icon>create</mat-icon>
+          </button>
+          Register
+      </a>
+    </mat-toolbar>
+  </p>
+</ng-template>
+
+<!-- USER HEADER -->
+
+<ng-template #user>
+  <p>
+    <mat-toolbar style="background-color: #0c1066;">
+      <a href="">
+        <span>CPlayers</span>
+      </a>
+      <span class="example-spacer"></span>
+      <img id="profilePicture" [matMenuTriggerFor]="menu" alt="" class="cplayer_imageUrl" mat-card-avatar [src]="loggedInUserDP" onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+      <button style="color: white;" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+      <mat-menu id="menu" #menu="matMenu">
+        <h3 style="text-align: center;">Hi, {{loggedInUser}}!</h3>
+        <button mat-menu-item [routerLink]="['/dashboard']">
+          	<mat-icon>dashboard</mat-icon>
+          <a ><span style="color:black">Dashboard</span></a>
+        </button>
+        <button mat-menu-item>
+          <a target="_blank" [routerLink]="['/rankings']">
+            <mat-icon>poll</mat-icon>
+            <span style="color:black">Player Rankings</span>
+          </a>
+        </button>
+        <button mat-menu-item [routerLink]="['/edit']">
+          <mat-icon>edit</mat-icon>
+          <span style="color: black">Edit Profile</span>
+        </button>
+        <span id="logout">
+          <button id="logoutbtn" mat-menu-item class="example-icon" (click)="logOut()">
+            <mat-icon>input</mat-icon>
+            <span style="color: black">Logout</span>
+          </button>
+        </span>
+      </mat-menu>
+    </mat-toolbar>
+  </p>
+</ng-template>

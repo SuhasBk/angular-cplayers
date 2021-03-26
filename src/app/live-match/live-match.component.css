@@ -1,0 +1,39 @@
+.example-viewport {
+    background-color: rgb(249, 249, 249);
+    margin: 1% 1% 1% 1%;
+    height: 100%;
+    /* width: 20%; */
+    border: 1px solid green;
+    border-radius: 1%;
+}
+
+.example-item {
+    height: 150px;
+}
+
+mat-card {
+    text-align: center;
+    background-color: rgb(249, 249, 249);
+}
+
+.matches:hover {
+    filter: brightness(85%);
+}
+
+#title {
+    text-align: center;
+    color: red;
+    font-size: xx-large;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+}
+
+#title-card {
+    background-color: rgb(249, 249, 249);
+}
+
+@keyframes blink {
+  from {color: red;}
+  to {color: white;}
+}

@@ -1,0 +1,29 @@
+.example-viewport {
+    background-color: rgb(249, 249, 249);
+    margin: 1% 1% 1% 1%;
+    height: 100%;
+    /* width: 20%; */
+    border: 1px solid green;
+    border-radius: 1%;
+}
+
+.example-item {
+    height: 150px;
+}
+
+mat-card {
+    background-color: rgb(249, 249, 249);
+    text-align: center;
+}
+
+.title {
+    background-color: rgb(249, 249, 249);
+}
+
+.cplayer:hover {
+    filter: brightness(85%);
+}
+
+.playerDetails {
+    background-color: rgb(249, 249, 249);
+}

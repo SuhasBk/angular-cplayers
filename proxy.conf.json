@@ -1,0 +1,32 @@
+{
+    "/api/matches": {
+        "target": "https://cricapi.com/api/matches",
+        "secure": false,
+        "logLevel": "silent",
+        "changeOrigin": true
+    },
+    "/api/playerFinder": {
+        "target": "https://cricapi.com/api/playerFinder",
+        "secure": false,
+        "logLevel": "silent",
+        "changeOrigin": true
+    },
+    "/api/playerStats": {
+        "target": "https://cricapi.com/api/playerStats",
+        "secure": false,
+        "logLevel": "silent",
+        "changeOrigin": true
+    },
+    "/api/fantasySummary" : {
+        "target": "https://cricapi.com/api/fantasySummary",
+        "secure": false,
+        "logLevel": "silent",
+        "changeOrigin": true
+    },
+    "/api/cricketScore": {
+        "target": "https://cricapi.com/api/cricketScore",
+        "secure": false,
+        "logLevel": "silent",
+        "changeOrigin": true
+    }
+}

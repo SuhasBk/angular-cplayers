@@ -1,0 +1,52 @@
+.layout-spacing{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.ml15{
+    margin-left:15px;
+}
+
+.main-container{
+    padding-top:30px;
+}
+
+.example-viewport {
+    background-color: rgb(249, 249, 249);
+    margin: 1% 1% 1% 1%;
+    height: 100%;
+    border: 1px solid green;
+    border-radius: 1%;
+}
+
+.example-item {
+    height: 200px;
+}
+
+mat-card {
+    text-align: center;
+    background-color: rgb(249, 249, 249);
+}
+
+mat-card:hover {
+    filter: brightness(85%);
+}
+
+.title {
+    text-align: center;
+    background-color: rgb(249, 249, 249);
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+    height: 70vh;
+  
+}
+  
+.tabs-header {
+    margin-bottom: 2%;
+    margin-top: 3%;
+    width: 100%;
+}
+  
+:host ::ng-deep .mat-tab-body.mat-tab-body-active {
+    height: 70vh;
+}

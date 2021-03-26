@@ -1,0 +1,18 @@
+<cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+    <mat-card class="title">
+        <mat-card-title>👍🏾 Recommendations 👍🏾</mat-card-title>
+    </mat-card>
+    <div *ngFor="let player of recommendations" class="example-item">
+        <div hidden #pid>{{player.id}}</div>
+        <mat-card class="cplayer" (click)="openDialog(player.id)">
+            <mat-card-content>
+                <img mat-card-avatar [src]="player.imgUrl" onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+                <h3>{{player.fullName}}</h3>
+            </mat-card-content>
+            <mat-card-action>
+                <button mat-button color="warn" (click)="remove(pid)">Remove</button>
+            </mat-card-action>
+        </mat-card>
+        <mat-divider></mat-divider>
+    </div>
+</cdk-virtual-scroll-viewport>

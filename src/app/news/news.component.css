@@ -1,0 +1,32 @@
+.example-viewport {
+    background-color: rgb(249, 249, 249);
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    height: 60%;
+    width: 90%;
+    border: 1px solid green;
+    border-radius: 1%;
+    position: absolute;
+}
+
+.example-item {
+    height: 130px;
+}
+
+mat-card {
+    text-align: center;
+    background-color: rgb(249, 249, 249);
+}
+
+mat-card:hover {
+    filter: brightness(85%);
+}
+
+mat-card-title {
+    text-align: center;
+}
+
+#title {
+    background-color: rgb(249, 249, 249);
+}

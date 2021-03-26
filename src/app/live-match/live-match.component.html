@@ -1,0 +1,24 @@
+<cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+    <mat-card id="title-card">
+        <mat-card-title id="title">
+            🏏 LIVE 🏏
+        </mat-card-title>
+    </mat-card>
+    <div *ngFor="let match of liveMatches" class="example-item">
+        <mat-card class="matches" (click)="openDialog(match['unique_id'])">
+            <mat-card-title *ngIf="match.winner === match['team-1']">
+                <mat-icon>stars</mat-icon> {{match['team-1']}} Vs {{match['team-2']}}
+            </mat-card-title>
+            <mat-card-title *ngIf="match.winner === match['team-2']">
+                {{match['team-1']}} Vs {{match['team-2']}}<mat-icon>stars</mat-icon>
+            </mat-card-title>
+            <mat-card-title *ngIf="!match.winner">
+                {{match['team-1']}} Vs {{match['team-2']}}
+            </mat-card-title>
+            <mat-card-content>
+                <h3>Match Type: {{ match['type'] ? match['type'] : 'ODI' }}</h3>
+            </mat-card-content>
+            <span>Click for more info</span>
+        </mat-card>
+    </div>
+</cdk-virtual-scroll-viewport>

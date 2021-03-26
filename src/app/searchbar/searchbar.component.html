@@ -1,0 +1,169 @@
+<mat-card>
+    <mat-form-field class="example-form-field" color="primary">
+        <input autofocus [(ngModel)]="playerName" id="searchField" matInput type="text" placeholder="Search for players" (keydown.enter)="search()" (keydown.esc)="panelOpenState=!panelOpenState"/>
+        <button mat-button *ngIf="playerName" matSuffix mat-icon-button (click)="playerName='';panelOpenState=false">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+    <button id="search-button" mat-button (click)="search()" color="primary">
+        <mat-icon>search</mat-icon>
+    </button>
+    <mat-accordion>
+        <mat-expansion-panel name="search-results" id="search-results" [expanded]="panelOpenState">
+            <h4>Players matching name "{{playerName}}":</h4>
+            <div *ngIf="players?.length == 0" style="text-align: center;">{{status}}</div>
+
+            <div fxLayout.lt-sm="column"  fxLayout="row wrap" fxLayoutGap="32px" fxLayoutAlign="flex-start">
+                <div *ngFor="let player of players">
+                    <span hidden #pid>{{player?.id}}</span>
+                    <!-- <mat-card class="cplayer-card" fxFlex.lt-sm="100%" fxFlex="1 1 calc(33.3% - 32px)" id="playerCard">
+                        <mat-header>
+                            <img alt="" class="cplayer_imageUrl" mat-card-avatar [src]="player.imgUrl"
+                                onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+                            <mat-card-title class="cplayer_fullName">
+                                <h1>{{(player?.fullName.length > 20) ? (player?.fullName | slice:0:20)+'...':(player?.fullName)}}</h1>
+                            </mat-card-title>
+                        </mat-header>
+                        <mat-card-content>
+                            <p *ngIf="player?.role">Playing Role : {{player?.role}}</p>
+                            <p class="cplayer_country">Country : {{player?.country}}</p>
+                            <p class="cplayer_majorteams">Teams :
+                                {{ (player?.team?.length>20)? (player?.team | slice:0:30)+'..':(player?.team) }}</p>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <div *ngIf="player.recommended; then unrecButton else recButton"></div>
+                            <ng-template #recButton>
+                                <button id="recButton" class="recommend" mat-raised-button (click)="toggleRec(pid)">
+                                    <mat-icon>thumb_up</mat-icon>
+                                </button>
+                            </ng-template>
+                            <ng-template #unrecButton>
+                                <button id="unrecButton" class="unrecommend" mat-raised-button (click)="toggleRec(pid)" #unrecButton>
+                                    <mat-icon>thumb_down</mat-icon>
+                                </button>
+                            </ng-template>
+                        
+                            <button mat-stroked-button (click)="openDialog(player.id)">Stats...</button>
+                        
+                            <div *ngIf="player.favorite; then unfavButton else favButton"></div>
+                            <ng-template #favButton>
+                                <button id="favButton" mat-mini-fab (click)="toggleFav(pid)" class="recommend">
+                                    <mat-icon>favorite_border</mat-icon>
+                                </button>
+                            </ng-template>
+                            <ng-template #unfavButton>
+                                <button id="unfavButton" mat-mini-fab (click)="toggleFav(pid)" class="unrecommend">
+                                    <mat-icon>favorite</mat-icon>
+                                </button>
+                            </ng-template>
+                        </mat-card-actions>
+                    </mat-card> -->
+
+                    <mat-card id="playerCard" class="cplayer-card" gdAreas="header header | side content | footer footer" gdGap="16px" gdRows="auto auto auto">
+                        <div gdArea="header">
+                            <mat-header>
+                                <img alt="" class="cplayer_imageUrl" mat-card-avatar [src]="player.imgUrl"
+                                    onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+                                <mat-card-title class="cplayer_fullName">
+                                    <h1>{{(player?.fullName.length > 20) ? (player?.fullName | slice:0:20)+'...':(player?.fullName)}}</h1>
+                                </mat-card-title>
+                            </mat-header>
+                        </div>
+                        <div gdArea="side">
+                            <mat-card-content>
+                                <p *ngIf="player?.role">Playing Role : {{player?.role}}</p>
+                                <p class="cplayer_country">Country : {{player?.country}}</p>
+                                <p class="cplayer_majorteams">Teams :
+                                    {{ (player?.team?.length>20)? (player?.team | slice:0:30)+'..':(player?.team) }}</p>
+                            </mat-card-content>
+                        </div>
+                        <div gdArea="footer">
+                            <mat-card-actions>
+                                <div *ngIf="player.recommended; then unrecButton else recButton"></div>
+                                <ng-template #recButton>
+                                    <button id="recButton" class="recommend" mat-raised-button (click)="toggleRec(pid)">
+                                        <mat-icon>thumb_up</mat-icon>
+                                    </button>
+                                </ng-template>
+                                <ng-template #unrecButton>
+                                    <button id="unrecButton" class="unrecommend" mat-raised-button (click)="toggleRec(pid)" #unrecButton>
+                                        <mat-icon>thumb_down</mat-icon>
+                                    </button>
+                                </ng-template>
+                            
+                                <button mat-stroked-button (click)="openDialog(player.id)">Stats...</button>
+                            
+                                <div *ngIf="player.favorite; then unfavButton else favButton"></div>
+                                <ng-template #favButton>
+                                    <button id="favButton" mat-mini-fab (click)="toggleFav(pid)" class="recommend">
+                                        <mat-icon>favorite_border</mat-icon>
+                                    </button>
+                                </ng-template>
+                                <ng-template #unfavButton>
+                                    <button id="unfavButton" mat-mini-fab (click)="toggleFav(pid)" class="unrecommend">
+                                        <mat-icon>favorite</mat-icon>
+                                    </button>
+                                </ng-template>
+                            </mat-card-actions>
+                        </div>
+                    </mat-card>
+
+                </div>
+            </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+</mat-card>
+
+
+<!-- <mat-grid-list cols="3" rowHeight="3:2">
+                <div *ngFor="let player of players">
+                    <span hidden #pid>{{player.id}}</span>
+                    <mat-grid-tile>
+                        <cdk-virtual-scroll-viewport itemSize="5" class="example-viewport">
+                            <mat-card id="playerCard" class="cplayer-card example-item">
+                                <mat-header>
+                                    <img alt="" class="cplayer_imageUrl" mat-card-avatar [src]="player.imgUrl"
+                                        onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+                                    <mat-card-title class="cplayer_fullName">
+                                        <h1>{{(player?.fullName.length > 20) ? (player?.fullName | slice:0:20)+'...':(player?.fullName)}}</h1>
+                                    </mat-card-title>
+                                </mat-header>
+                                <mat-card-content>
+                                    <p *ngIf="player?.role">Playing Role : {{player?.role}}</p>
+                                    <p class="cplayer_country">Country : {{player?.country}}</p>
+                                    <p class="cplayer_majorteams">Teams :
+                                        {{ (player?.team?.length>20)? (player?.team | slice:0:30)+'..':(player?.team) }}</p>
+                                </mat-card-content>
+                                <mat-card-actions>
+                                    <div *ngIf="player.recommended; then unrecButton else recButton"></div>
+                                    <ng-template #recButton>
+                                        <button id="recButton" class="recommend" mat-raised-button (click)="toggleRec(pid)">
+                                            <mat-icon>thumb_up</mat-icon>
+                                        </button>
+                                    </ng-template>
+                                    <ng-template #unrecButton>
+                                        <button id="unrecButton" class="unrecommend" mat-raised-button (click)="toggleRec(pid)" #unrecButton>
+                                            <mat-icon>thumb_down</mat-icon>
+                                        </button>
+                                    </ng-template>
+                            
+                                    <button mat-stroked-button (click)="openDialog(player.id)">Stats...</button>
+                            
+                                    <div *ngIf="player.favorite; then unfavButton else favButton"></div>
+                                    <ng-template #favButton>
+                                        <button id="favButton" mat-mini-fab (click)="toggleFav(pid)" class="recommend">
+                                            <mat-icon>favorite_border</mat-icon>
+                                        </button>
+                                    </ng-template>
+                                    <ng-template #unfavButton>
+                                        <button id="unfavButton" mat-mini-fab (click)="toggleFav(pid)" class="unrecommend">
+                                            <mat-icon>favorite</mat-icon>
+                                        </button>
+                                    </ng-template>
+                                </mat-card-actions>
+                            </mat-card>
+                        </cdk-virtual-scroll-viewport>
+                    </mat-grid-tile>
+                </div>
+            </mat-grid-list> -->

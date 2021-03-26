@@ -1,0 +1,205 @@
+<mat-tab-group class="tabs-header" mat-align-tabs="center" backgroundColor="primary" dynamicHeight>
+    <!-- BATTING RANK FOR ALL THREE MATCH TYPES -->
+    <mat-tab label="Batting Rank">
+        <!-- THREE MATCH TABS FOR BATTING -->
+        <mat-tab-group mat-align-tabs="center">
+            <!-- ONE -- TEST Match Rank-->
+            <mat-tab label="TEST Match Rank">
+                <cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+                    <mat-card class="title">
+                      <mat-card-title>🏏 Player Ranking 🏏</mat-card-title>
+                    </mat-card> 
+                    <div *ngFor="let playerData of batting_test" class="example-item">
+                    <mat-card class="cplayer-card" (click)="openDialog(playerData.pid)">
+                        <mat-card-content>
+                            <div hidden #pid>{{playerData.pid}}</div>
+                            <img alt="" class="cplayer_imageUrl" mat-card-avatar [src]="playerData?.imageURL" onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+                            <div>
+                                Name : {{playerData.fullName}}
+                            </div>
+                            <div>
+                                Country : {{playerData.country}},
+                            </div>
+                            <div>
+                                Team : {{playerData.majorTeams}}
+                            </div>
+                            <div>
+                                BattingStyle: {{playerData.battingStyle}}
+                            </div>
+                            <div>
+                                Score : {{playerData['data']['batting']['tests'].Ave}}
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                </cdk-virtual-scroll-viewport>
+            </mat-tab>
+            <!-- TWO - T20 Match Rank-->
+            <mat-tab label="T20 Match Rank">
+                <cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+                    <mat-card class="title">
+                        <mat-card-title>🏏 Player Ranking🏏</mat-card-title>
+                    </mat-card> 
+                    <div *ngFor="let playerData of batting_T20" class="example-item">
+                      <mat-card class="cplayer-card" (click)="openDialog(playerData.pid)">
+                          <mat-card-content>
+                            <div hidden #pid>{{playerData.pid}}</div>
+                            <img alt="" class="cplayer_imageUrl" mat-card-avatar [src]="playerData?.imageURL" onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+                            <div>
+                                Name : {{playerData.fullName}}
+                            </div>
+                            <div>
+                                Country : {{playerData.country}},
+                            </div>
+                            <div>
+                                Team : {{playerData.majorTeams}}
+                            </div>
+                            <div>
+                                BattingStyle: {{playerData.battingStyle}}
+                            </div>
+                            <div>
+                                Score : {{playerData['data']['batting']['T20Is'].Ave}}
+                            </div>
+                          </mat-card-content>
+                      </mat-card>
+                  </div>
+                </cdk-virtual-scroll-viewport>
+            </mat-tab>
+            <!-- THREE -  ODI MATCH-->
+            <mat-tab label="ODI Match Rank">
+                <cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+                    <mat-card class="title">
+                        <mat-card-title>🏏 Player Ranking🏏</mat-card-title>
+                    </mat-card> 
+                    <div *ngFor="let playerData of batting_OD" class="example-item">
+                      <mat-card class="cplayer-card" (click)="openDialog(playerData.pid)">
+                          <mat-card-content>
+                            <div hidden #pid>{{playerData.pid}}</div>
+                            <img alt="" class="cplayer_imageUrl" mat-card-avatar [src]="playerData?.imageURL" onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+                            <div>
+                                Name : {{playerData.fullName}}
+                            </div>
+                            <div>
+                                Country : {{playerData.country}},
+                            </div>
+                            <div>
+                                Team : {{playerData.majorTeams}}
+                            </div>
+                            <div>
+                                BattingStyle: {{playerData.battingStyle}}
+                            </div>
+                            <div>
+                                Score : {{playerData['data']['batting']['ODIs'].Ave}}
+                            </div>
+                          </mat-card-content>
+                      </mat-card>
+                  </div>
+                </cdk-virtual-scroll-viewport>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-tab>
+
+    <!-- BOWLING RANK FOR ALL THREE MATCH TYPES -->
+    <mat-tab label="Bowling Rank">
+        <mat-tab-group mat-align-tabs="center">
+            <!-- ONE -- TEST Match Rank-->
+            <mat-tab label="TEST Match Rank">
+                <cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+                    <mat-card class="title">
+                      <mat-card-title>🏏 Player Ranking🏏</mat-card-title>
+                    </mat-card> 
+                    <div *ngFor="let playerBowlingData of bowling_test" class="example-item">
+                    <mat-card class="cplayer-card" (click)="openDialog(playerData.pid)">
+                        <mat-card-content>
+                            <div hidden #pid>{{playerBowlingData.pid}}</div>
+                            <img alt="" class="cplayer_imageUrl" mat-card-avatar [src]="playerBowlingData?.imageURL" onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+                            <div>
+                                Name : {{playerBowlingData.fullName}}
+                            </div>
+                            <div>
+                                Country : {{playerBowlingData.country}},
+                            </div>
+                            <div>
+                                Team : {{playerBowlingData.majorTeams}}
+                            </div>
+                            <div>
+                                bowlingStyle: {{playerBowlingData.bowlingStyle}}
+                            </div>
+                            <div>
+                                Score : {{playerBowlingData['data']['bowling']['tests'].Ave}}
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                </cdk-virtual-scroll-viewport>
+            </mat-tab>
+            <!-- TWO - T20 Match Rank-->
+            <mat-tab label="T20 Match Rank">
+                <cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+                    <mat-card class="title">
+                        <mat-card-title>🏏 Player Ranking🏏</mat-card-title>
+                    </mat-card> 
+                    <div *ngFor="let playerData of bowling_T20" class="example-item">
+                      <mat-card class="cplayer-card" (click)="openDialog(playerData.pid)">
+                          <mat-card-content>
+                            <div hidden #pid>{{playerData.pid}}</div>
+                            <img alt="" class="cplayer_imageUrl" mat-card-avatar [src]="playerData?.imageURL" onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+                            <div>
+                                Name : {{playerData.fullName}}
+                            </div>
+                            <div>
+                                Country : {{playerData.country}},
+                            </div>
+                            <div>
+                                Team : {{playerData.majorTeams}}
+                            </div>
+                            <div>
+                                bowlingStyle: {{playerData.bowlingStyle}}
+                            </div>
+                            <div>
+                                Score : {{playerData['data']['bowling']['T20Is'].Ave}}
+                            </div>
+                          </mat-card-content>
+                      </mat-card>
+                  </div>
+                </cdk-virtual-scroll-viewport>
+            </mat-tab>
+            <!-- THREE -  ODI MATCH-->
+            <mat-tab label="ODI Match Rank">
+                <cdk-virtual-scroll-viewport itemSize="100" class="example-viewport">
+                    <mat-card class="title">
+                        <mat-card-title>🏏 Player Ranking🏏</mat-card-title>
+                    </mat-card> 
+                    <div *ngFor="let playerData of bowling_OD" class="example-item">
+                      <mat-card class="cplayer-card" (click)="openDialog(playerData.pid)">
+                          <mat-card-content>
+                            <div hidden #pid>{{playerData.pid}}</div>
+                            <img alt="" class="cplayer_imageUrl" mat-card-avatar [src]="playerData?.imageURL" onerror="this.onerror=null;this.src='../../assets/defaultdp.png';">
+                            <div>
+                                Name : {{playerData.fullName}}
+                            </div>
+                            <div>
+                                Country : {{playerData.country}},
+                            </div>
+                            <div>
+                                Team : {{playerData.majorTeams}}
+                            </div>
+                            <div>
+                                bowlingStyle: {{playerData.bowlingStyle}}
+                            </div>
+                            <div>
+                                Score : {{playerData['data']['bowling']['ODIs'].Ave}}
+                            </div>
+                          </mat-card-content>
+                      </mat-card>
+                  </div>
+                </cdk-virtual-scroll-viewport>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-tab>
+</mat-tab-group>
+
+
+
+
+
